@@ -1,4 +1,4 @@
-FROM cusdeb/stretch-node:amd64
+FROM node:8-alpine
 MAINTAINER Evgeny Golyshev <eugulixes@gmail.com>
 
 ENV BUNDLE_DIR /home/rocketchat/bundle
@@ -10,14 +10,18 @@ ENV RC_VERSION 1.3.1
 
 COPY patches /home/rocketchat/patches
 
-RUN apt-get update \
- && apt-get install -y \
-    build-essential \
+# Alpine 3.9 is used but it's necessary to install vips which is a part of
+# Alpine 3.10 and later, so add the Alpine 3.10 repo to install the package.
+RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.10/community >> /etc/apk/repositories \
+ && apk --update add \
     curl \
+    g++ \
     gnupg \
+    make \
     patch \
     python \
- && useradd -m rocketchat \
+    vips \
+ && adduser -D rocketchat \
  # Install Rocket.Chat
  && for i in $(seq 1 10); do \
       gpg --no-tty --keyserver ha.pool.sks-keyservers.net --recv-keys $PUBLIC_KEY && break; \
@@ -35,20 +39,20 @@ RUN apt-get update \
  ; do patch -p1 < "../patches/${path}" \
  ; done \
  && cd programs/server \
+ && rm -r npm/node_modules/sharp/vendor \
  && npm install \
  && curl -O https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh \
  && chmod +x wait-for-it.sh \
  && mv wait-for-it.sh /usr/local/bin \
  # Cleanup
- && apt-get purge -y \
-    build-essential \
+ && apk del \
     curl \
+    g++ \
     gnupg \
+    make \
     patch \
     python \
- && apt-get autoremove -y \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/cache/apk/*
 
 WORKDIR $BUNDLE_DIR
 
