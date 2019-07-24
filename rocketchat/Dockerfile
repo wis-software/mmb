@@ -14,6 +14,7 @@ COPY patches /home/rocketchat/patches
 # Alpine 3.10 and later, so add the Alpine 3.10 repo to install the package.
 RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.10/community >> /etc/apk/repositories \
  && apk --update add \
+    bash \
     curl \
     g++ \
     gnupg \
