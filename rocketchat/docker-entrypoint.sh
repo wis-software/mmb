@@ -9,6 +9,10 @@ export MONGO_OPLOG_URL="mongodb://${MONGO_OPLOG_HOST}/local?replSet=rs01"
 
 wait-for-it.sh -h "${host}" -p "${port}" -t 90 -- >&2 echo "MongoDB is ready"
 
+. ~/.nvm/nvm.sh
+
+nvm install 8
+
 n=0
 until [ ${n} -ge 5 ]; do
   node main.js && break
