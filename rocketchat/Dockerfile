@@ -3,7 +3,15 @@ MAINTAINER Evgeny Golyshev <eugulixes@gmail.com>
 
 ENV BUNDLE_DIR /root/bundle
 
+ENV GLIBC_VER 2.30
+
 ENV LD_LIBRARY_PATH /lib:/usr/lib
+
+ENV NODE_PATH /root/node/lib/node_modules
+
+ENV NODE_VER 8.16.1
+
+ENV PATH $PATH:/root/node/bin
 
 # Rocket.Chat Buildmaster <buildmaster@rocket.chat>
 ENV PUBLIC_KEY 0E163286C20D07B9787EBE9FD7F9D0414FD08104
@@ -22,7 +30,6 @@ RUN apk --update add \
     make \
     patch \
     python \
-    sudo \
     vips \
  # Install Rocket.Chat
  && for i in $(seq 1 10); do \
@@ -30,12 +37,14 @@ RUN apk --update add \
       rm -r /root/.gnupg; \
     done \
  && cd \
- # glibc
+ # Installing a glibc compatibility layer
  && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
- && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk \
- && apk add glibc-2.28-r0.apk \
- # Node
- && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash \
+ && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER-r0/glibc-$GLIBC_VER-r0.apk \
+ && apk add glibc-$GLIBC_VER-r0.apk \
+ # Installing Node.js
+ && wget https://nodejs.org/dist/v$NODE_VER/node-v$NODE_VER-linux-x64.tar.xz \
+ && tar xJf node-v$NODE_VER-linux-x64.tar.xz \
+ && mv node-v$NODE_VER-linux-x64 node \
  # Rocket.Chat itself
  && curl -fSL https://releases.rocket.chat/$RC_VERSION/download -o rocket.chat.tgz \
  && curl -fSL https://releases.rocket.chat/$RC_VERSION/asc -o rocket.chat.tgz.asc \
@@ -48,7 +57,8 @@ RUN apk --update add \
  ; done \
  && cd programs/server \
  && rm -r npm/node_modules/sharp/vendor \
- && . ~/.nvm/nvm.sh && nvm install 8 && npm install \
+ && npm config set user 0 \
+ && npm install \
  && curl -O https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh \
  && chmod +x wait-for-it.sh \
  && mv wait-for-it.sh /usr/local/bin \
@@ -59,9 +69,9 @@ RUN apk --update add \
     make \
     patch \
     python \
-    sudo \
  && cd \
- && rm      glibc-2.28-r0.apk \
+ && rm      glibc-$GLIBC_VER-r0.apk \
+ && rm      node-v$NODE_VER-linux-x64.tar.xz \
  && rm -r   patches \
  && rm -rf /var/cache/apk/*
 
