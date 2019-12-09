@@ -37,19 +37,19 @@ Rocket.Chat Hubot adapter is the way to integrate [Hubot](https://hubot.github.c
 
 The following set of scripts makes the bot capable of doing all sort of things:
 
-* [hubot-happy-birthder](https://github.com/tolstoyevsky/hubot-happy-birthder) – writes birthday messages to users.
-* [hubot-help](https://github.com/tolstoyevsky/hubot-help) – shows available commands.
-* [hubot-huntflow-reloaded](https://github.com/tolstoyevsky/hubot-huntflow-reloaded) – helps handling incoming interviews.
-* [hubot-pugme](https://github.com/tolstoyevsky/hubot-pugme) – shows random pictures with pugs.
+* [hubot-happy-birthder](https://github.com/wis-software/hubot-happy-birthder) – writes birthday messages to users.
+* [hubot-help](https://github.com/wis-software/hubot-help) – shows available commands.
+* [hubot-huntflow-reloaded](https://github.com/wis-software/hubot-huntflow-reloaded) – helps handling incoming interviews.
+* [hubot-pugme](https://github.com/wis-software/hubot-pugme) – shows random pictures with pugs.
 * [hubot-reaction](https://github.com/hubot-scripts/hubot-reaction) – interacts with [replygif.net](http://replygif.net).
 * [hubot-redis-brain](https://github.com/hubotio/hubot-redis-brain) – allows using Redis as an alternative storage backend for the Hubot in-memory key-value storage exposed as `robot.brain`.
 * [hubot-thesimpsons](https://github.com/hubot-scripts/hubot-thesimpsons) – generates the quotes and images related to The Simpsons.
-* [hubot-viva-las-vegas](https://github.com/tolstoyevsky/hubot-viva-las-vegas) – allows handling leave requests.
-* [hubot-vote-or-die](https://github.com/tolstoyevsky/hubot-vote-or-die) – allows building polls.
+* [hubot-viva-las-vegas](https://github.com/wis-software/hubot-viva-las-vegas) – allows handling leave requests.
+* [hubot-vote-or-die](https://github.com/wis-software/hubot-vote-or-die) – allows building polls.
 
 ## Installation
 
-Read the [Getting Started](https://github.com/tolstoyevsky/mmb#getting-started) section to learn how to install this or other services.
+Read the [Getting Started](https://github.com/wis-software/mmb#getting-started) section to learn how to install this or other services.
 
 ## Note to macOS users
 
@@ -132,13 +132,13 @@ By default, the packages from the list <a href="#features">above</a> will be ins
     <td align="center" colspan="3"><b>hubot-happy-birthder</b></td>
   </tr>
   <tr>
-    <td colspan="3"><code>TENOR_API_KEY</code> is the only <b>mandatory</b> parameter both in this script and in the Docker image. The script will fail if the parameter is equal to an empty string (which it is by default).<br>See the description for all the parameters related to the script in its original <a href="https://github.com/tolstoyevsky/hubot-happy-birthder">README</a>.</td>
+    <td colspan="3"><code>TENOR_API_KEY</code> is the only <b>mandatory</b> parameter both in this script and in the Docker image. The script will fail if the parameter is equal to an empty string (which it is by default).<br>See the description for all the parameters related to the script in its original <a href="https://github.com/wis-software/hubot-happy-birthder">README</a>.</td>
   </tr>
   <tr>
     <td align="center" colspan="3"><b>hubot-huntflow-reloaded</b></td>
   </tr>
   <tr>
-    <td colspan="3">See the description for all the parameters related to the script in its original <a href="https://github.com/tolstoyevsky/hubot-huntflow-reloaded">README</a>.</td>
+    <td colspan="3">See the description for all the parameters related to the script in its original <a href="https://github.com/wis-software/hubot-huntflow-reloaded">README</a>.</td>
   </tr>
   <tr>
     <td align="center" colspan="3"><b>hubot-redis-brain</b></td>
@@ -152,7 +152,7 @@ By default, the packages from the list <a href="#features">above</a> will be ins
     <td align="center" colspan="3"><b>hubot-viva-las-vegas</b></td>
   </tr>
   <tr>
-    <td colspan="3">See the description for all the parameters related to the script in its original <a href="https://github.com/tolstoyevsky/hubot-viva-las-vegas">README</a>.</td>
+    <td colspan="3">See the description for all the parameters related to the script in its original <a href="https://github.com/wis-software/hubot-viva-las-vegas">README</a>.</td>
   </tr>
 </table>
 
@@ -193,4 +193,4 @@ The section described two possible ways of debugging the scripts. Read [Debuggin
 If you use macOS you need to modify the configuration specified in `docker-compose.yml`.
 
 Replace `network_mode: "host"` settings with `network_mode: "container:rocketchat_rocketchat_1"` in both `hubot-rocketchat` and `redis` services, 
-where `rocketchat_rocketchat_1` is the name of the running container with the Rocket.Chat server (see Rocket.Chat [README](https://github.com/tolstoyevsky/mmb/tree/master/rocketchat) for details).
+where `rocketchat_rocketchat_1` is the name of the running container with the Rocket.Chat server (see Rocket.Chat [README](https://github.com/wis-software/mmb/tree/master/rocketchat) for details).

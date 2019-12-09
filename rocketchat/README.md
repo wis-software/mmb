@@ -39,7 +39,7 @@ Rocket.Chat is a self-hosted alternative to Slack.
 
 ## Installation
 
-Read the [Getting Started](https://github.com/tolstoyevsky/mmb#getting-started) section to learn how to install this or other services.
+Read the [Getting Started](https://github.com/wis-software/mmb#getting-started) section to learn how to install this or other services.
 
 ## First run of Rocket.Chat
 
@@ -60,7 +60,7 @@ macOS doesn't have the `/srv` directory which the MongoDB service relies on. Mor
 
 ## Custom permissions
 
-Note that the Rocket.Chat will have the custom permissions for the [hubot-viva-las-vegas](https://github.com/tolstoyevsky/hubot-viva-las-vegas) Hubot script. If you are not going to use the script, it’s better to remove the patch from the `patches` directory before building the image.
+Note that the Rocket.Chat will have the custom permissions for the [hubot-viva-las-vegas](https://github.com/wis-software/hubot-viva-las-vegas) Hubot script. If you are not going to use the script, it’s better to remove the patch from the `patches` directory before building the image.
 Here is the list of all custom permissions:
 * `hubot-viva-send-leave-request` allows users to send leave request.
 * `hubot-viva-approve-leave-request` allows users to approve leave requests.
