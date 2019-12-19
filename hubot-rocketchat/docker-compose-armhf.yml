@@ -1,7 +1,7 @@
 version: "2"
 services:
   hubot-rocketchat:
-    image: cusdeb/hubot-rocketchat:2.0-armhf
+    image: wissoft/hubot-rocketchat:2.0-armhf
     network_mode: "container:rocketchat_rocketchat_1"
     environment:
     - AUTH_ATTEMPTS=${AUTH_ATTEMPTS}
@@ -57,7 +57,7 @@ services:
     - ./packages:/home/hubot/packages
     - ./scripts:/home/hubot/scripts
   redis:
-    image: cusdeb/redis:5.0-amd64
+    image: wissoft/redis:5.0-amd64
     environment:
     # Enable AOF
     - REDIS_CONF_appendonly=yes
