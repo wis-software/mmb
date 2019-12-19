@@ -1,7 +1,7 @@
 version: "2"
 services:
   redis:
-    image: cusdeb/redis:5.0-armhf
+    image: wissoft/redis:5.0-armhf
     network_mode: "host"
     environment:
     - REDIS_CONF_bind=127.0.0.1

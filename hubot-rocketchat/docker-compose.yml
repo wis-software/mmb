@@ -6,7 +6,7 @@ services:
     volumes:
       - /var/run
   hubot-rocketchat:
-    image: cusdeb/hubot-rocketchat:2.0-amd64
+    image: wissoft/hubot-rocketchat:2.0-amd64
     networks:
     - rocketchat_rocketchat-network
     environment:
@@ -65,7 +65,7 @@ services:
     volumes_from:
       - socket
   redis:
-    image: cusdeb/redis:5.0-amd64
+    image: wissoft/redis:5.0-amd64
     environment:
     # Enable AOF
     - REDIS_CONF_appendonly=yes
