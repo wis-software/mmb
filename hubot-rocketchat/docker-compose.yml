@@ -57,6 +57,8 @@ services:
     volumes:
     - ./packages:/root/hubot/packages
     - ./scripts:/root/hubot/scripts
+    ports:
+    - "9229:9229"
   redis:
     image: wissoft/redis:5.0-amd64
     networks:
