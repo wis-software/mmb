@@ -1,10 +1,5 @@
 version: "2"
 services:
-  socket:
-    image: busybox
-    command: chmod -R 777 /var/run
-    volumes:
-      - /var/run
   hubot-rocketchat:
     image: wissoft/hubot-rocketchat:2.0-amd64
     networks:
@@ -62,24 +57,21 @@ services:
     volumes:
     - ./packages:/root/hubot/packages
     - ./scripts:/root/hubot/scripts
-    volumes_from:
-      - socket
     ports:
     - "9229:9229"
   redis:
     image: wissoft/redis:5.0-amd64
+    networks:
+    - rocketchat_rocketchat-network
     environment:
     # Enable AOF
     - REDIS_CONF_appendonly=yes
     # Disable RDB
     - REDIS_CONF_save=
     - REDIS_CONF_loglevel=notice
-    - REDIS_CONF_unixsocket=/var/run/hubot-redis.sock
-    - REDIS_CONF_unixsocketperm=777
+    - REDIS_CONF_bind=0.0.0.0
     volumes:
     - /srv/redis-dump:/dump
-    volumes_from:
-      - socket
 networks:
   rocketchat_rocketchat-network:
     external: true
