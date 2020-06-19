@@ -1,7 +1,7 @@
 version: "3"
 services:
   rocketchat:
-    image: wissoft/rocketchat:2.4-amd64
+    image: wissoft/rocketchat:2.4.12-amd64
     networks:
     - rocketchat-network
     environment:
