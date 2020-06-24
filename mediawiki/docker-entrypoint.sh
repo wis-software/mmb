@@ -30,6 +30,7 @@ sed -i -e "s/ALLOW_ACCOUNT_CREATION/${ALLOW_ACCOUNT_CREATION}/" /var/www/w/Local
 sed -i -e "s/ALLOW_ACCOUNT_EDITING/${ALLOW_ACCOUNT_EDITING}/" /var/www/w/LocalSettings.php
 sed -i -e "s/ALLOW_ANONYMOUS_READING/${ALLOW_ANONYMOUS_READING}/" /var/www/w/LocalSettings.php
 sed -i -e "s/ALLOW_ANONYMOUS_EDITING/${ALLOW_ANONYMOUS_EDITING}/" /var/www/w/LocalSettings.php
+sed -i -e "s/BLOCK_DISABLES_LOGIN/${BLOCK_DISABLES_LOGIN}/" /var/www/w/LocalSettings.php
 
 >&2 echo "Waiting for MariaDB server"
 

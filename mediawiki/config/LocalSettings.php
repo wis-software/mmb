@@ -168,5 +168,9 @@ $wgSessionsInObjectCache = true;
 // that $wgVirtualRestConfig['modules']['parsoid']['url'] be pointed to localhost if this setting is enabled.
 $wgVirtualRestConfig['modules']['parsoid']['forwardCookies'] = true;
 
+
+// Prevents disabled users to have access to wiki
+$wgBlockDisablesLogin = BLOCK_DISABLES_LOGIN;
+
 // Extensions
 wfLoadExtension('SyntaxHighlight_GeSHi');
