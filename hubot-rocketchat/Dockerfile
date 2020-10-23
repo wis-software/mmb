@@ -7,7 +7,7 @@ ENV BOT_OWNER "No owner specified"
 
 ENV BOT_DESC "Hubot with rocketbot adapter"
 
-ENV HUBOT_VERSION 2.19.0
+ENV HUBOT_VERSION 3.3.2
 
 ENV RC_HUBOT_BRANCH 930d085472bb9afa122721fa1b0bec59a783b86b
 

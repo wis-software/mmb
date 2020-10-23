@@ -1,7 +1,7 @@
 version: "2"
 services:
   hubot-rocketchat:
-    image: wissoft/hubot-rocketchat:2.0-amd64
+    image: wissoft/hubot-rocketchat:3.0-amd64
     networks:
     - rocketchat_rocketchat-network
     environment:
