@@ -1,4 +1,4 @@
-FROM cusdeb/stretch-node:amd64
+FROM node:12-stretch
 MAINTAINER Evgeny Golyshev <eugulixes@gmail.com>
 
 ENV BUNDLE_DIR /home/rocketchat/bundle
@@ -6,7 +6,7 @@ ENV BUNDLE_DIR /home/rocketchat/bundle
 # Rocket.Chat Buildmaster <buildmaster@rocket.chat>
 ENV PUBLIC_KEY 0E163286C20D07B9787EBE9FD7F9D0414FD08104
 
-ENV RC_VERSION 2.4.12
+ENV RC_VERSION 3.7.1
 
 COPY patches /home/rocketchat/patches
 

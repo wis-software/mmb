@@ -1,7 +1,7 @@
 version: "3"
 services:
   rocketchat:
-    image: wissoft/rocketchat:2.4.12-amd64
+    image: wissoft/rocketchat:3.7.1
     networks:
     - rocketchat-network
     environment:
@@ -13,7 +13,7 @@ services:
     ports:
     - "8006:8006"
   mongo:
-    image: mongo:3.6-jessie
+    image: mongo:4.0
     networks:
     - rocketchat-network
     volumes:
